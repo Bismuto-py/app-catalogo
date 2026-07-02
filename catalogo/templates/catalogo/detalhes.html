@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ obra.titulo }}</title>
+
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        {% if obra %}
+
+            <div class="card">
+
+                <h1>{{ obra.titulo }}</h1>
+
+                <p><strong>Tipo:</strong> {{ obra.tipo }}</p>
+
+                <p><strong>Ano:</strong> {{ obra.ano }}</p>
+
+                <p><strong>Gênero:</strong> {{ obra.genero }}</p>
+
+                <p><strong>Descrição:</strong> {{ obra.descricao }}</p>
+
+                <a class="btn" href="{% url 'catalogo:index' %}">
+                    Voltar para o catálogo
+                </a>
+
+            </div>
+
+        {% else %}
+
+            <p class="mensagem">Obra não encontrada.</p>
+
+            <a class="btn" href="{% url 'catalogo:index' %}">
+                Voltar para o catálogo
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

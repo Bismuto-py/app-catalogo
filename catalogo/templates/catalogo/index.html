@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo</title>
+
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🎬 Catálogo de Filmes e Séries</h1>
+
+        {% if obras %}
+
+            {% for obra in obras %}
+
+                <div class="card">
+
+                    <h2>{{ obra.titulo }}</h2>
+
+                    <p><strong>Tipo:</strong> {{ obra.tipo }}</p>
+
+                    <p><strong>Ano:</strong> {{ obra.ano }}</p>
+
+                    <p><strong>Gênero:</strong> {{ obra.genero }}</p>
+
+                    <a class="btn" href="{% url 'catalogo:detalhes' obra.id %}">
+                        Ver detalhes
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="mensagem">Nenhuma obra encontrada.</p>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

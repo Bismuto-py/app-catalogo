@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Obra</title>
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Obra</h1>
+        <p>Você está cadastrando uma nova obra</p>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Cadastrar obra</button>
+        </form>
+
+        <a class="btn" href="{% url 'catalogo:index' %}">Voltar para o catálogo</a>
+    </div>
+
+</body>
+</html>
